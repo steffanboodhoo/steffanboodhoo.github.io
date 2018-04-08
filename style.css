@@ -98,7 +98,7 @@ input, textarea, select
     display: none !important;    
 }
 .content-auto{
-    max-width: 70%;
+    max-width: 80%;
 }
 .content-auto img{
     max-width: 100%;
