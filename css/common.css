@@ -208,10 +208,10 @@
 {
     width: 100%;
 }
-blockquote:before 
+.fancy-blockquote:before 
 {
     content: '\201C';
-    font-size: 180px;
+    font-size: 100px;
     line-height: 0;
     font-family: 'Montserrat', sans-serif, Arial;
     vertical-align: -65px;
@@ -219,16 +219,16 @@ blockquote:before
     text-align: center;
     display: block;
 }
-blockquote
+.fancy-blockquote
 {
     margin-top: 110px;
     margin-bottom: 60px;
     font-family: 'Montserrat', sans-serif, Arial;
-    font-size: 22px;
+    font-size: 18px;
     line-height: 35px;
     color: #b0c2c2;
 }
-blockquote.inline-blockquote
+.fancy-blockquote.inline-blockquote
 {
     width: 395px;
     float: left;

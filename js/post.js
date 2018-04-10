@@ -19,12 +19,11 @@ function code_spacing(elem){
 	lines.forEach(function(line){
 		if(line!=""){
 			line = line.split("")
-			console.log(typeof(line))
 			line.splice(0,space_count)
 			line = line.join('')
-			line = line.replace('<','&lt;')
-			line = line.replace('>','&gt;')
-			line = line.replace('"','&quot;')
+			line = line.replace(/</g,'&lt;')
+			line = line.replace(/>/g,'&gt;')
+			line = line.replace(/"/g,'&quot;')
 		}
 		new_lines.push(line);
 	})
@@ -39,9 +38,7 @@ function code_spacing(elem){
 
 function get_elems(){
 	let elems = document.getElementsByClassName("code-space");
-	console.log(elems)
 	Array.prototype.forEach.call(elems, function(e){
 		code_spacing(e);
-		// console.log(e.innerText);
 	})
 }

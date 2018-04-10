@@ -1072,7 +1072,7 @@ body.open .site-content
 
 @media screen and (max-width: 1340px) {    
 
-    blockquote.inline-blockquote 
+    .fancy-blockquote.inline-blockquote 
     {
         display: block !important;
         float: none;

@@ -10,13 +10,15 @@
 
         <link rel="shortcut icon" href="images/favicon.png" />
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700%7CLibre+Baskerville:400,400italic,700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css">
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css"> -->
 
         <link rel="stylesheet" type="text/css"  href='../css/clear.css' />
         <link rel="stylesheet" type="text/css"  href='../css/common.css' />
         <link rel="stylesheet" type="text/css"  href='../css/font-awesome.min.css' />
         <link rel="stylesheet" type="text/css"  href='../css/carouFredSel.css' />
         <link rel="stylesheet" type="text/css"  href='../css/sm-clean.css' />
+        <link rel="stylesheet" type="text/css"  href='../css/prism.css' />
+
         <link rel="stylesheet" type="text/css"  href='../style.css' />
         <link rel="stylesheet" type="text/css"  href='../post_style.css' />
 
@@ -121,11 +123,11 @@
                         
 
                         <div class="content-wrap content-auto center-relative">
-                            <h2>1. Setup</h2>
+                            <h2>Setup</h2>
 
 
-                            <h4>1.1 Dependencies</h4>                                
-                            <h6>1.1.1 Installing node and NPM</h6>
+                            <h4>Dependencies</h4>                                
+                            <h6>Installing node and NPM</h6>
                             <figure>
                                 <pre>
                                     <code class="language-bash code-space">
@@ -141,8 +143,8 @@
                             </p>
                             
 
-                            <h4>1.2 Project Initialization and NPM modules</h4>                            
-                            <h6>1.2.1 Package to create react app template</h6>
+                            <h4>Project Initialization and NPM modules</h4>                            
+                            <h6>Package to create react app template</h6>
                             <figure>
                                 <pre>
                                     <code class="language-bash code-space">
@@ -179,8 +181,8 @@
                             <p>The browser should open to the application running on <a href="http:\\localhost:3000">localhost:3000</a></p>
                            
 
-                           <h4>1.3 Fresh Start</h4>
-                           <h6>1.3.1 Restructuring</h6>
+                           <h4>Fresh Start</h4>
+                           <h6>Restructuring</h6>
                            <p> We want to start from nothing so we're going to remove all the previous code, remove all the current files from the src folder.</p>
                            <figure>
                                 <pre>
@@ -194,20 +196,149 @@
                             </p>
                             <figure>
                                 <pre>
-                                    <code class="language-html code-space">
+                                    <code id="test" class="language-html code-space">
                                         &lt;!DOCTYPE html&gt;
                                         &lt;html&gt;
                                         &lt;head&gt;
-                                            &lt;title&gt;&lt;/title&gt;
+                                            &lt;title&gt; MySite :) &lt;/title&gt;
                                         &lt;/head&gt;
                                         &lt;body&gt;
-
+                                        
                                         &lt;/body&gt;
                                         &lt;script type=&quot;text/javascript&quot; src=&quot;index.js&quot;&gt;&lt;/script&gt;
                                         &lt;/html&gt;                      
                                     </code>
                                 </pre>
-                            </figure>                            
+                            </figure>     
+
+
+                            <h2>React Basics</h2>                     
+
+                            <h4>Components I</h4>
+                            <h6>What is React ?</h6>
+                            <p>There are very many fanciful and technical definitions which you can google, for now i'll say it in a simple manner using my own words
+                            <br>
+                            <br>
+                            React is a framework that specializes on building an application using reuseable parts called Components that you create and customize.
+                            </p>
+
+                            <h6>What is a component ?</h6>
+                            <p>Components are the building blocks for react
+                            <br>A component can be thought of as a custom element that you create, for a simple example, consider the following</p>                            
+                            <figure>
+                                <pre>
+                                    <code id="test" class="language-html code-space">
+                                        &lt;h1&gt; Bork Bork, I am hungry &lt;/h1&gt;                      
+                                    </code>
+                                </pre>
+                            </figure>                                 
+                            <p>Suppose we wanted to create an 'element' that would always do this, well that's where components come in, we can create a component to do just that.
+                            <br>
+                            In your <code class="inline-snip">index.js</code> file, insert the following.
+                            </p>
+                            <figure>
+                                <pre>
+                                    <code id="test" class="language-jsx code-space">
+                                        import {React,Component} from 'react';
+
+                                        class Dog extends Component{
+                                            render(){
+                                                return(&lt;h1&gt;Bork Bork, I am hungry&lt;/h1&gt;);
+                                            }
+                                        }                     
+                                    </code>
+                                </pre>
+                            </figure>  
+                            <p>
+                            <blockquote class="fancy-blockquote">
+                                <code class="inline-snip">React</code> is the entry point to the React library. If you load React from a <code class="inline-snip">&lt;script&gt;</code> tag, these top-level APIs are available on the <code>React</code> global. If you use ES6 with npm, you can write <code class="inline-snip">import React from 'react'</code>. If you use ES5 with npm, you can write <code class="inline-snip">var React = require('react').</code>
+                                <br>
+                                - <a href="https://reactjs.org/docs/react-api.html">React docs</a>
+                            </blockquote>                             
+                            To put it simply, the <code class="inline-snip">React</code> library allows you to use <code class="inline-snip">Components</code> which gives you the ability to create 'custom elements' that you can reuse.
+                            <br>
+                            The <code class="inline-snip">Component</code> class's fundamental method is <code class="inline-snip">render</code>. Simply, the <code class="inline-snip">render</code> method should return what you would like on your page. 
+                            </p>
+                            
+                            <h6>render, render ? React-Dom</h6>
+                            <p>Up till now we haven't actually put anything onto our page, it's time to change that, using <code class="inline-snip">React-Dom</code>. <code class="inline-snip">React-Dom</code> as the name implies, allows us to interact with the DOM. The bread and butter of this library is it's own <code class="inline-snip">render</code> method, which actually puts whatever is given to it on the page. The <b>previous</b> <code class="inline-snip">render</code> method was part of the <code class="inline-snip">Component</code> class and acted as the output for that specific <code class="inline-snip">Component</code> while this <code class="inline-snip">render</code> method takes whatever is given to it and spits it on the page wherever you specify.
+                            <br>
+                            <br>
+                            Let's see how it works, first we need to create a place to put our component, edit your index.html
+                            </p>
+                            <figure>
+                                <pre data-line="8">
+                                    <code id="test" class="language-html code-space">
+                                        &lt;!DOCTYPE html&gt;
+                                        &lt;html&gt;
+                                        &lt;head&gt;
+                                            &lt;title&gt; MySite :) &lt;/title&gt;
+                                        &lt;/head&gt;
+                                        &lt;body&gt;
+                                            &lt;div id=&quot;root&quot;&gt; &lt;/div&gt;
+                                        &lt;/body&gt;
+                                        &lt;script type=&quot;text/javascript&quot; src=&quot;index.js&quot;&gt;&lt;/script&gt;
+                                        &lt;/html&gt;                      
+                                    </code>
+                                </pre>
+                            </figure>   
+                            <p>Now edit your index.js to look like the following</p>  
+                            <figure>
+                                <pre data-line="3,11">
+                                    <code class="language-jsx code-space">
+                                        import {React,Component} from 'react';
+                                        import {render} from 'react-dom';
+
+                                        class Dog extends Component{
+                                            render(){
+                                                return(&lt;h1&gt;Bork Bork, I am hungry&lt;/h1&gt;);
+                                            }
+                                        }                   
+
+                                        render(&lt;Dog/&gt;, document.getElementById('root'));
+                                    </code>
+                                </pre>
+                            </figure>  
+                            <p>If you do not already have your application running you can do so by running </p>
+                             <figure>
+                                <pre>
+                                    <code class="language-bash code-space">
+                                        $ npm start                        
+                                    </code>
+                                </pre>
+                            </figure>
+                            <p>The browser should open to the application running on <a href="http:\\localhost:3000">localhost:3000</a></p>
+
+                            <h6>Side step into JSX ?</h6> 
+                            <p>
+                            It may seem confusing to see HTML code on your page, this is because we are using JSX. JSX can be thought of as an extension to javascript that embraces the natural coupling of structure to functionality or rather naturally adding HTML structure through javascript. (note we can use react without JSX however it's not the best idea imo)
+                            <br>
+                            <br>
+                            JSX allows you embed expressions i.e. put in javascript variables and manipulate them in the HTML. You can do this with the use of curly braces <code class="inline-snip">{ }</code>
+                            </p>
+                            <figure>
+                                <pre data-line="7,8">
+                                    <code id="test" class="language-jsx code-space">
+                                        import {React,Component} from 'react';
+                                        import {render} from 'react-dom';
+
+                                        class Dog extends Component{                                            
+                                            render(){
+                                                let speech = "Bork Bork, I am hungry";
+                                                return(&lt;h1&gt;{speech}&lt;/h1&gt;);
+                                            }
+                                        }   
+
+                                        render(&lt;Dog/&gt;, document.getElementById('root'));                  
+                                    </code>
+                                </pre>
+                            </figure>  
+                            
+                            <h4>Components II</h4>
+                            <h6>Props and State</h6>
+
+                            <h6>The react app standard</h6>
+                            <p>The usual way to do things; the entire application is usually one <code class="inline-snip">Component</code> using other smaller <code class="inline-snip">Components</code> that you create (which may use other smaller <code class="inline-snip">Components</code> that you create, compoception :o )</p>
                         </div>
                         
                             
@@ -230,6 +361,7 @@
         <script type='text/javascript' src='../js/jquery.easing.1.3.js'></script>
         <script type='text/javascript' src='../js/main.js'></script>
         <script type='text/javascript' src='../js/post.js'></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
+        <script type='text/javascript' src='../js/prism.js'></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script> -->
     </body>
 </html>
