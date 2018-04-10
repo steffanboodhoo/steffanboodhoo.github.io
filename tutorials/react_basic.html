@@ -239,7 +239,7 @@
                             <figure>
                                 <pre>
                                     <code id="test" class="language-jsx code-space">
-                                        import {React,Component} from 'react';
+                                        import React,{Component} from 'react';
 
                                         class Dog extends Component{
                                             render(){
@@ -249,12 +249,13 @@
                                     </code>
                                 </pre>
                             </figure>  
-                            <p>
+                            
                             <blockquote class="fancy-blockquote">
                                 <code class="inline-snip">React</code> is the entry point to the React library. If you load React from a <code class="inline-snip">&lt;script&gt;</code> tag, these top-level APIs are available on the <code>React</code> global. If you use ES6 with npm, you can write <code class="inline-snip">import React from 'react'</code>. If you use ES5 with npm, you can write <code class="inline-snip">var React = require('react').</code>
                                 <br>
                                 - <a href="https://reactjs.org/docs/react-api.html">React docs</a>
-                            </blockquote>                             
+                            </blockquote> 
+                            <p>                            
                             To put it simply, the <code class="inline-snip">React</code> library allows you to use <code class="inline-snip">Components</code> which gives you the ability to create 'custom elements' that you can reuse.
                             <br>
                             The <code class="inline-snip">Component</code> class's fundamental method is <code class="inline-snip">render</code>. Simply, the <code class="inline-snip">render</code> method should return what you would like on your page. 
@@ -286,7 +287,7 @@
                             <figure>
                                 <pre data-line="3,11">
                                     <code class="language-jsx code-space">
-                                        import {React,Component} from 'react';
+                                        import React,{Component} from 'react';
                                         import {render} from 'react-dom';
 
                                         class Dog extends Component{
@@ -311,7 +312,13 @@
 
                             <h6>Side step into JSX ?</h6> 
                             <p>
-                            It may seem confusing to see HTML code on your page, this is because we are using JSX. JSX can be thought of as an extension to javascript that embraces the natural coupling of structure to functionality or rather naturally adding HTML structure through javascript. (note we can use react without JSX however it's not the best idea imo)
+                            It may seem confusing to see HTML code in your javascript file, this is because we are using JSX. 
+                            <blockquote class="fancy-blockquote">
+                                JSX is a preprocessor step that adds XML syntax to JavaScript.
+                                <br>
+                                - <a href="https://reactjs.org/docs/react-api.html">React docs</a>
+                            </blockquote>
+                            JSX allows you to naturally add HTML structure through javascript. (note we can use react without JSX however it's not the best idea imo)
                             <br>
                             <br>
                             JSX allows you embed expressions i.e. put in javascript variables and manipulate them in the HTML. You can do this with the use of curly braces <code class="inline-snip">{ }</code>
@@ -319,7 +326,7 @@
                             <figure>
                                 <pre data-line="7,8">
                                     <code id="test" class="language-jsx code-space">
-                                        import {React,Component} from 'react';
+                                        import React,{Component} from 'react';
                                         import {render} from 'react-dom';
 
                                         class Dog extends Component{                                            
@@ -333,9 +340,76 @@
                                     </code>
                                 </pre>
                             </figure>  
+                            <p>Try changing the text for <i>speech</i> to see if it works :^) </p>
                             
                             <h4>Components II</h4>
-                            <h6>Props and State</h6>
+                            <h6>State mate</h6>
+                            <p><code class="inline-snip">state</code> is an object that stores the state of a component and is defined in it's <code class="inline-snip">constructor</code> method. You can access it by conventional methods. 
+                            <br>In the following, we are going to define <code class="inline-snip"><i>speech</i></code> in the <code class="inline-snip">Component's state</code> and give it the text we'd like displayed.</p>
+                            <figure>
+                                <pre data-line="6-11,14">
+                                    <code id="test" class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+                                        import {render} from 'react-dom';
+
+                                        class Dog extends Component{   
+                                            constructor(){
+                                              super();
+                                              this.state = {
+                                                speech: &quot;Bork Bork, I am a doggie :)&quot;
+                                              }
+                                            }
+
+                                            render(){        
+                                                return(&lt;h1&gt;{this.state.speech}&lt;/h1&gt;);
+                                            }
+                                        }   
+
+                                        render(&lt;Dog/&gt;, document.getElementById('root'));                 
+                                    </code>
+                                </pre>
+                            </figure>  
+                            <p>Things to note, you should call <code class="inline-snip">super();</code> at the start of your constructor, it allows acces of <code class="inline-snip">props</code>
+                            <br>
+                            <code class="inline-snip">state</code> is simple javascript object and <code class="inline-snip"><i>speech</i></code> is just a property.
+                            <br>
+                            The way we accessed <code class="inline-snip"><i>speech</i></code> was <code class="inline-snip">this.state.speech</code>
+                            </p>
+
+                            <h6>Props man</h6>
+                            <p>
+                            <code class="inline-snip">props</code> are the properties you want to pass to your <code class="inline-snip">Component</code>. There are a few ways in which people pass <code class="inline-snip">props</code> however the fundamental principle is that a <code class="inline-snip">prop</code> is passed to a <code class="inline-snip">Component</code> as an attribute.
+                            <br>
+                            In the following example I am going to pass what I would the <code class="inline-snip">Dog Component</code> is going to say using a <code class="inline-snip">prop</code> that I will name <code class="inline-snip"><i>woof</i></code>.
+                            </p>
+                            <figure>
+                                <pre data-line="6,9,18">
+                                    <code id="test" class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+                                        import {render} from 'react-dom';
+
+                                        class Dog extends Component{   
+                                            constructor(props){
+                                              super();
+                                              this.state = {
+                                                speech: props.woof
+                                              }
+                                            }
+
+                                            render(){        
+                                                return(&lt;h1&gt;{this.state.speech}&lt;/h1&gt;);
+                                            }
+                                        }   
+
+                                        render(&lt;Dog woof=&quot;Bork Bork, I am a good doggie :)&quot;/&gt;, document.getElementById('root'));                  
+                                    </code>
+                                </pre>
+                            </figure>  
+                            <p>Things to note; 
+                            <br>We passed in what our Dog is saying using the attribute <i>woof</i> <code class="inline-snip">&lt;Dog woof=&quot;Bork Bork, I am a good doggie :)&quot;/&gt;</code> 
+                            <br>The constructor method accepted <code class="inline-snip">props</code> <code class="inline-snip">constructor(props)</code>
+                            <br><code class="inline-snip">props</code> is a simple object and <i>woof</i> is just a property accessed as usual <code class="inline-snip">props.<i>woof</i></code>
+                            </p>
 
                             <h6>The react app standard</h6>
                             <p>The usual way to do things; the entire application is usually one <code class="inline-snip">Component</code> using other smaller <code class="inline-snip">Components</code> that you create (which may use other smaller <code class="inline-snip">Components</code> that you create, compoception :o )</p>

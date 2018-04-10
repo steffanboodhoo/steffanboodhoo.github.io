@@ -1,3 +1,6 @@
+p{
+	color: #0E0B0B;
+}
 a{
 	text-decoration-color: #74DAF3;
 	/*text-decoration: none;*/
@@ -11,5 +14,5 @@ pre
 }
 
 .inline-snip{
-	background:#f5f2f0;
+	background:#E9E9E9;
 }

@@ -221,12 +221,12 @@
 }
 .fancy-blockquote
 {
-    margin-top: 110px;
-    margin-bottom: 60px;
+    margin-top: 7%;
+    margin-bottom: 5%;
     font-family: 'Montserrat', sans-serif, Arial;
     font-size: 18px;
     line-height: 35px;
-    color: #b0c2c2;
+    color: #A0A0A0;
 }
 .fancy-blockquote.inline-blockquote
 {
