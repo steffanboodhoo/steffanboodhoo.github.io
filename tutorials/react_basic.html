@@ -188,12 +188,12 @@
                                     </code>
                                 </pre>
                             </figure>
-                            <p>In the <code class="inline-snip">src</code> folder Create two new files <code class="inline-snip">index.html</code> and <code class="inline-snip">index.js</code>
+                            <p>In the <code class="inline-snip">src</code> folder Create two new files <code class="inline-snip"><i>index.html</i></code> and <code class="inline-snip"><i>index.js</i></code>
                             <br/> We're going to create a basic web page and link the javascript file.                            
                             </p>
                             <figure>
                                 <pre>
-                                    <code id="test" class="language-html code-space">
+                                    <code class="language-html code-space">
                                         &lt;!DOCTYPE html&gt;
                                         &lt;html&gt;
                                         &lt;head&gt;
@@ -224,18 +224,18 @@
                             <br>A component can be thought of as a custom element that you create, for a simple example, consider the following</p>                            
                             <figure>
                                 <pre>
-                                    <code id="test" class="language-html code-space">
+                                    <code class="language-html code-space">
                                         &lt;h1&gt; Bork Bork, I am hungry &lt;/h1&gt;                      
                                     </code>
                                 </pre>
                             </figure>                                 
                             <p>Suppose we wanted to create an 'element' that would always do this, well that's where components come in, we can create a component to do just that.
                             <br>
-                            In your <code class="inline-snip">index.js</code> file, insert the following.
+                            In your <code class="inline-snip"><i>index.js</i></code> file, insert the following.
                             </p>
                             <figure>
                                 <pre>
-                                    <code id="test" class="language-jsx code-space">
+                                    <code class="language-jsx code-space">
                                         import React,{Component} from 'react';
 
                                         class Dog extends Component{
@@ -246,7 +246,6 @@
                                     </code>
                                 </pre>
                             </figure>  
-                            
                             <blockquote class="fancy-blockquote">
                                 <code class="inline-snip">React</code> is the entry point to the React library. If you load React from a <code class="inline-snip">&lt;script&gt;</code> tag, these top-level APIs are available on the <code>React</code> global. If you use ES6 with npm, you can write <code class="inline-snip">import React from 'react'</code>. If you use ES5 with npm, you can write <code class="inline-snip">var React = require('react').</code>
                                 <br>
@@ -262,11 +261,11 @@
                             <p>Up till now we haven't actually put anything onto our page, it's time to change that, using <code class="inline-snip">React-Dom</code>. <code class="inline-snip">React-Dom</code> as the name implies, allows us to interact with the DOM. The bread and butter of this library is it's own <code class="inline-snip">render</code> method, which actually puts whatever is given to it on the page. The <b>previous</b> <code class="inline-snip">render</code> method was part of the <code class="inline-snip">Component</code> class and acted as the output for that specific <code class="inline-snip">Component</code> while this <code class="inline-snip">render</code> method takes whatever is given to it and spits it on the page wherever you specify.
                             <br>
                             <br>
-                            Let's see how it works, first we need to create a place to put our component, edit your index.html
+                            Let's see how it works, first we need to create a place to put our component so we're going to add a <code class="inline-snip">div</code> with the id root, edit your <code class="inline-snip">index.html</code> to look like the following
                             </p>
                             <figure>
                                 <pre data-line="8">
-                                    <code id="test" class="language-html code-space">
+                                    <code class="language-html code-space">
                                         &lt;!DOCTYPE html&gt;
                                         &lt;html&gt;
                                         &lt;head&gt;
@@ -280,7 +279,7 @@
                                     </code>
                                 </pre>
                             </figure>   
-                            <p>Now edit your index.js to look like the following</p>  
+                            <p>Now we're going to import the <code class="inline-snip">render</code> function from the <code class="inline-snip">react-dom</code> library and <code class="inline-snip">render</code> it in the div we just added, edit your <code class="inline-snip"><i>index.js</i></code> to look like the following</p>  
                             <figure>
                                 <pre data-line="3,11">
                                     <code class="language-jsx code-space">
@@ -297,7 +296,10 @@
                                     </code>
                                 </pre>
                             </figure>  
-                            <p>If you do not already have your application running you can do so by running </p>
+                            <p>
+                            Note that either render function must only have a single root element.
+                            <br>
+                            If you do not already have your application running you can do so by running </p>
                              <figure>
                                 <pre>
                                     <code class="language-bash code-space">
@@ -322,7 +324,7 @@
                             </p>
                             <figure>
                                 <pre data-line="7,8">
-                                    <code id="test" class="language-jsx code-space">
+                                    <code class="language-jsx code-space">
                                         import React,{Component} from 'react';
                                         import {render} from 'react-dom';
 
@@ -345,7 +347,7 @@
                             <br>In the following, we are going to define <code class="inline-snip"><i>speech</i></code> in the <code class="inline-snip">Component's state</code> and give it the text we'd like displayed.</p>
                             <figure>
                                 <pre data-line="6-11,14">
-                                    <code id="test" class="language-jsx code-space">
+                                    <code class="language-jsx code-space">
                                         import React,{Component} from 'react';
                                         import {render} from 'react-dom';
 
@@ -381,7 +383,7 @@
                             </p>
                             <figure>
                                 <pre data-line="6,9,18">
-                                    <code id="test" class="language-jsx code-space">
+                                    <code class="language-jsx code-space">
                                         import React,{Component} from 'react';
                                         import {render} from 'react-dom';
 
@@ -408,8 +410,159 @@
                             <br><code class="inline-snip">props</code> is a simple object and <i>woof</i> is just a property accessed as usual <code class="inline-snip">props.<i>woof</i></code>
                             </p>
 
+                            <h6>Updating state</h6>
+                            <p>We update a <code class="inline-snip">Component's state</code> using the <code class="inline-snip">setState</code> method. "Why can't we just set the state directly ?", well the <code class="inline-snip">setState</code> method has triggers that cause the component to be re-rendered for the new values. To put it simply, if we use <code class="inline-snip">setState</code> the component is automatically updated for us in the DOM.
+                            <br>
+                            To show how this works, we're going to create an input box that allows us to update text for our Dog Component. We're going to (1) add an input box, (2) define some function to update the <code class="inline-snip">state</code> with the text from the box.
+                            </p>
+                            <figure>
+                                <pre data-line="13-15,19-22">
+                                    <code class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+                                        import {render} from 'react-dom';
+
+                                        class Dog extends Component{   
+                                            constructor(props){
+                                              super();
+                                              this.state = {
+                                                speech: props.woof,
+                                              }
+                                            }
+
+                                            textChanged = (e) =&gt;{
+                                              this.setState({speech:e.target.value})
+                                            }
+
+                                            render(){        
+                                              return(
+                                                  &lt;div&gt;
+                                                    &lt;h1&gt;{this.state.speech}&lt;/h1&gt;
+                                                    &lt;input onInput={this.textChanged} type=&quot;text&quot;/&gt;
+                                                  &lt;/div&gt;
+                                              );
+                                            }
+
+                                        }   
+
+                                        render(&lt;Dog woof=&quot;Bork Bork,I am a good doggie :)&quot;/&gt;, document.getElementById('root'));   
+                                    </code>
+                                </pre>
+                            </figure>  
+                            <p>We created a function <code class="inline-snip"><i>textChanged</i></code> to update the <code class="inline-snip">state</code>'s property <code class="inline-snip"><i>speech</i></code> with whatever the user inputs. We also added an <code class="inline-snip">input</code> field and used it's <code class="inline-snip">onInput</code> attribute to call our <code class="inline-snip"><i>textChanged</i></code> function, note that the <code class="inline-snip">input</code> element and the <code class="inline-snip">onInput</code> attribute are default HTML.
+                            <br>
+                            If you're paying attention, there is one more thing we changed, we put a <code class="inline-snip">div</code> around the <code class="inline-snip">h1</code> and <code class="inline-snip">input</code> tags. This is because there must be a single root element for the <code class="inline-snip">render</code> function.
+                            </p>
                             <h6>The react app standard</h6>
-                            <p>The usual way to do things; the entire application is usually one <code class="inline-snip">Component</code> using other smaller <code class="inline-snip">Components</code> that you create (which may use other smaller <code class="inline-snip">Components</code> that you create, compoception :o )</p>
+                            <p>The usual way to do things; the entire application is usually one <code class="inline-snip">Component</code> using other smaller <code class="inline-snip">Components</code> that you create (which may use other smaller <code class="inline-snip">Components</code> that you create, compoception :o )
+                            <br>
+                            Okay spread em, we'll leave our <code class="inline-snip"><i>index.js</i></code> for our main app component and put a the Dog component in a new file <code class="inline-snip"><i>Dog.js</i></code>. 
+                            <br>Create <code class="inline-snip"><i>Dog.js</i></code> and make it look like this
+                            </p>
+                            <figure>
+                                <pre data-line="4">
+                                    <code class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+
+                                        export default class Dog extends Component{   
+                                            constructor(props){
+                                              super();
+                                              this.state = {
+                                                speech: props.woof,
+                                              }
+                                            }
+
+                                            textChanged = (e) =&gt;{
+                                              this.setState({speech:e.target.value})
+                                            }
+
+                                            render(){        
+                                              return(
+                                                  &lt;div&gt;
+                                                    &lt;h1&gt;Bork Bork,{this.state.speech}&lt;/h1&gt;
+                                                    &lt;input onInput={this.textChanged} type=&quot;text&quot;/&gt;
+                                                  &lt;/div&gt;
+                                              );
+                                            }
+
+                                        }     
+                                    </code>
+                                </pre>
+                            </figure>  
+                            <p>Now time for <code class="inline-snip"><i>index.js</i></code>, we're going to create a new component to represent our app and we'll call it <i>App</i></p>
+                            <figure>
+                                <pre data-line="4-17">
+                                    <code class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+                                        import {render} from 'react-dom';
+                                        import Dog from './Dog.js';
+
+                                        class App extends Component{
+                                          render(){
+                                            return(
+                                              &lt;div&gt;
+                                                &lt;Dog woof=&quot;I need petting&quot; /&gt;
+                                              &lt;/div&gt;
+                                            );
+                                          }
+
+                                        }
+
+                                        render(&lt;App/&gt;, document.getElementById('root')); 
+                                    </code>
+                                </pre>
+                            </figure>  
+                            <p>Try to create a simple Cat component on your own in a file <code class="inline-snip"><i>Cat.js</i></code>, i'll put a sample below in case you're feeling a bit lazy =/.</p>
+                            <figure>
+                                <pre>
+                                    <code class="language-jsx code-space">
+                                        import React, {Component} from 'react';
+
+                                        export default class Cat extends Component{
+                                            constructor(){
+                                                super();
+                                            }
+
+                                            render(){
+                                                return(
+                                                    &lt;h1&gt; Meow :) &lt;/h1&gt;
+                                                );
+                                            }
+
+                                        }
+                                    </code>
+                                </pre>
+                            </figure>  
+                            <p>Now make the required edits to your <code class="inline-snip"><i>index.js</i></code> file to import our Cat component and render it</p>
+                            <figure>
+                                <pre data-line="5,12">
+                                    <code class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+                                        import {render} from 'react-dom';
+                                        import Dog from './Dog.js';
+                                        import Cat from './Cat.js';
+
+                                        class App extends Component{
+                                          render(){
+                                            return(
+                                              &lt;div&gt;
+                                                &lt;Dog woof=&quot;I need petting&quot; /&gt;
+                                                &lt;Cat /&gt;
+                                              &lt;/div&gt;
+                                            );
+                                          }
+
+                                        }
+
+                                        render(&lt;App/&gt;, document.getElementById('root')); 
+                                    </code>
+                                </pre>
+                            </figure>  
+
+                            <h2>React Application Essentials</h2>
+                            <h4>Routing</h4>
+                            <p>If everything is in Javascript and there's only one page, how do routes work ? 
+                            react-router-dom</p>
+                            <h4>Requests</h4>
                         </div>
                         
                             
