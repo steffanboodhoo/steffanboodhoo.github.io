@@ -405,7 +405,7 @@
                                 </pre>
                             </figure>  
                             <p>Things to note; 
-                            <br>We passed in what our Dog is saying using the attribute <i>woof</i> <code class="inline-snip">&lt;Dog woof=&quot;Bork Bork, I am a good doggie :)&quot;/&gt;</code> 
+                            <br>We passed in what our doggo is saying using the attribute <i>woof</i> <code class="inline-snip">&lt;Dog woof=&quot;Bork Bork, I am a good doggie :)&quot;/&gt;</code> 
                             <br>The constructor method accepted <code class="inline-snip">props</code> <code class="inline-snip">constructor(props)</code>
                             <br><code class="inline-snip">props</code> is a simple object and <i>woof</i> is just a property accessed as usual <code class="inline-snip">props.<i>woof</i></code>
                             </p>
@@ -413,7 +413,7 @@
                             <h6>Updating state</h6>
                             <p>We update a <code class="inline-snip">Component's state</code> using the <code class="inline-snip">setState</code> method. "Why can't we just set the state directly ?", well the <code class="inline-snip">setState</code> method has triggers that cause the component to be re-rendered for the new values. To put it simply, if we use <code class="inline-snip">setState</code> the component is automatically updated for us in the DOM.
                             <br>
-                            To show how this works, we're going to create an input box that allows us to update text for our Dog Component. We're going to (1) add an input box, (2) define some function to update the <code class="inline-snip">state</code> with the text from the box.
+                            To show how this works, we're going to create an input box that allows us to update text for our <code class="inline-snip"><i>Dog</i></code> Component. We're going to (1) add an input box, (2) define some function to update the <code class="inline-snip">state</code> with the text from the box.
                             </p>
                             <figure>
                                 <pre data-line="13-15,19-22">
@@ -452,10 +452,10 @@
                             <br>
                             If you're paying attention, there is one more thing we changed, we put a <code class="inline-snip">div</code> around the <code class="inline-snip">h1</code> and <code class="inline-snip">input</code> tags. This is because there must be a single root element for the <code class="inline-snip">render</code> function.
                             </p>
-                            <h6>The react app standard</h6>
+                            <h6>A bit closer to the Standard</h6>
                             <p>The usual way to do things; the entire application is usually one <code class="inline-snip">Component</code> using other smaller <code class="inline-snip">Components</code> that you create (which may use other smaller <code class="inline-snip">Components</code> that you create, compoception :o )
                             <br>
-                            Okay spread em, we'll leave our <code class="inline-snip"><i>index.js</i></code> for our main app component and put a the Dog component in a new file <code class="inline-snip"><i>Dog.js</i></code>. 
+                            Okay spread em, we'll leave our <code class="inline-snip"><i>index.js</i></code> for our main app component and put a the <code class="inline-snip"><i>Dog</i></code> component in a new file <code class="inline-snip"><i>Dog.js</i></code>. 
                             <br>Create <code class="inline-snip"><i>Dog.js</i></code> and make it look like this
                             </p>
                             <figure>
@@ -488,7 +488,7 @@
                                     </code>
                                 </pre>
                             </figure>  
-                            <p>Now time for <code class="inline-snip"><i>index.js</i></code>, we're going to create a new component to represent our app and we'll call it <i>App</i></p>
+                            <p>Now time for <code class="inline-snip"><i>index.js</i></code>, we're going to create a new component to represent our app and we'll call it <code class="inline-snip"><i>App</i></code></p>
                             <figure>
                                 <pre data-line="4-17">
                                     <code class="language-jsx code-space">
@@ -511,7 +511,7 @@
                                     </code>
                                 </pre>
                             </figure>  
-                            <p>Try to create a simple Cat component on your own in a file <code class="inline-snip"><i>Cat.js</i></code>, i'll put a sample below in case you're feeling a bit lazy =/.</p>
+                            <p>Try to create a simple <code class="inline-snip"><i>Cat</i></code> component on your own in a file <code class="inline-snip"><i>Cat.js</i></code>, i'll put a sample below in case you're feeling a bit lazy =/.</p>
                             <figure>
                                 <pre>
                                     <code class="language-jsx code-space">
@@ -532,7 +532,7 @@
                                     </code>
                                 </pre>
                             </figure>  
-                            <p>Now make the required edits to your <code class="inline-snip"><i>index.js</i></code> file to import our Cat component and render it</p>
+                            <p>Now make the required edits to your <code class="inline-snip"><i>index.js</i></code> file to import our <code class="inline-snip"><i>Cat</i></code> component and render it</p>
                             <figure>
                                 <pre data-line="5,12">
                                     <code class="language-jsx code-space">
@@ -560,9 +560,299 @@
 
                             <h2>React Application Essentials</h2>
                             <h4>Routing</h4>
-                            <p>If everything is in Javascript and there's only one page, how do routes work ? 
-                            react-router-dom</p>
+                            <h6>Installing react-router-dom</h6>
+                            <p>There is only one HTML page so how exactly does one present different views or give the illusion of 'pages', how do we go about routing different views based on user selections. The intuition is to have components that represents views (pages) and load components based off what the user selects. 
+                            <br>
+                            To help us achieve this we are going to use a library called <code class="inline-snip">react-router-dom</code>. This is an <b>external</b> library to react therefore we need to download and add it to our project, we can do this using <code class="inline-snip">npm</code>
+                            </p>
+                            <figure>
+                                <pre>
+                                    <code class="language-bash code-space">
+                                        npm install react-router-dom --save
+                                    </code>
+                                </pre>
+                            </figure> 
+
+                            <h6>BrowserRouter and Route</h6>
+                            <p>There are two main components to consider for routing however we'll only be focusing and using the Component <code class="inline-snip">BrowserRouter</code>. <code class="inline-snip">BrowserRouter</code> acts the mastermind behind your routing, since we're swapping components rather than loading pages, BrowserRouter tracks your 'location' and saves 'browsing history' within the application.
+                            <br>
+                            The <code class="inline-snip">BrowserRouter</code> swaps components and memorizes the order of swaps but how do we actually define the routes i.e. what path => what component, well the <code class="inline-snip">Route</code> component does exactly that.
+                            <br>
+                            We're going to define a route for our <code class="inline-snip"><i>Dog</i></code> component and another for our <code class="inline-snip"><i>Cat</i></code> component, edit your <code class="inline-snip">index.js</code> too look like the following
+                            </p>
+                            <figure>
+                                <pre data-line="6,11-16">
+                                    <code class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+                                        import {render} from 'react-dom';
+                                        import Dog from './Dog.js';
+                                        import Cat from './Cat.js';
+                                        import { BrowserRouter, Route, Link } from 'react-router-dom';
+
+                                        class App extends Component{
+                                          render(){
+                                            return(
+                                              &lt;BrowserRouter&gt;
+                                                &lt;div&gt;
+                                                  &lt;Route path=&quot;/dog&quot; component={Dog}/&gt; 
+                                                  &lt;Route path=&quot;/cat&quot; component={Cat}/&gt;
+                                                &lt;/div&gt;
+                                              &lt;/BrowserRouter&gt;
+                                            );
+                                          }
+
+                                        }
+
+                                        render(&lt;App/&gt;, document.getElementById('root')); 
+                                    </code>
+                                </pre>
+                            </figure> 
+                            <p>We changed the components <code class="inline-snip"><i>Dog</i></code> and <code class="inline-snip"><i>Cat</i></code> with the <code class="inline-snip">Route</code> component. In the <code class="inline-snip">Route</code> component, we specified the path in the <code class="inline-snip">path</code> property and the component to load in the <code class="inline-snip">component</code> attribute, weird right ( ͡° ͜ʖ ͡°).
+                            <br> We then wrapped everything in the <code class="inline-snip">BrowserRouter</code> component, note that <code class="inline-snip">BrowserRouter</code> only expects a single child. 
+                            <br>
+                            Run your application then navigate to <a href="http://localhost:3000/cat">localhost:3000/cat</a> and <a href="http://localhost:3000/dog">localhost:3000/dog</a>.
+                            </p>
+
+                            <h6>Links</h6>
+                            <p>Let's create a simple menu to link to our routes.</p>
+                            <figure>
+                                <pre data-line="16-19">
+                                    <code class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+                                        import {render} from 'react-dom';
+                                        import Dog from './Dog.js';
+                                        import Cat from './Cat.js';
+                                        import { BrowserRouter, Route, Link } from 'react-router-dom';
+
+                                        class App extends Component{
+                                          render(){
+                                            return(
+                                              &lt;BrowserRouter&gt;
+                                                &lt;div&gt;
+                                                  &lt;Route path=&quot;/dog&quot; component={Dog}/&gt; 
+                                                  &lt;Route path=&quot;/cat&quot; component={Cat}/&gt;
+
+                                                  &lt;ul&gt;
+                                                    &lt;li&gt; &lt;a href=&quot;/dog&quot;&gt;dog&lt;/a&gt; &lt;/li&gt;
+                                                    &lt;li&gt; &lt;a href=&quot;/cat&quot;&gt;cat&lt;/a&gt; &lt;/li&gt;
+                                                  &lt;/ul&gt;
+                                                &lt;/div&gt;
+                                              &lt;/BrowserRouter&gt;
+                                            );
+                                          }
+
+                                        }
+
+                                        render(&lt;App/&gt;, document.getElementById('root')); 
+                                    </code>
+                                </pre>
+                            </figure> 
+                            <p>This triggers a browser refresh each time a link is clicked, this is bad because we already have everything we need loaded, this means our application can run much faster. To solve this we replace the anchor tags with the <code class="inline-snip">Link</code> component. The <code class="inline-snip">Link</code> component acts just as the anchor tag would but without the page refresh.</p>
+                            <figure>
+                                <pre data-line="17,18">
+                                    <code class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+                                        import {render} from 'react-dom';
+                                        import Dog from './Dog.js';
+                                        import Cat from './Cat.js';
+                                        import { BrowserRouter, Route, Link } from 'react-router-dom';
+
+                                        class App extends Component{
+                                          render(){
+                                            return(
+                                              &lt;BrowserRouter&gt;
+                                                &lt;div&gt;
+                                                  &lt;Route path=&quot;/dog&quot; component={Dog}/&gt; 
+                                                  &lt;Route path=&quot;/cat&quot; component={Cat}/&gt;
+
+                                                  &lt;ul&gt;
+                                                    &lt;li&gt; &lt;Link to=&quot;/dog&quot;&gt;dog&lt;/Link&gt; &lt;/li&gt;
+                                                    &lt;li&gt; &lt;Link to=&quot;/cat&quot;&gt;cat&lt;/Link&gt; &lt;/li&gt;
+                                                  &lt;/ul&gt;
+                                                &lt;/div&gt;
+                                              &lt;/BrowserRouter&gt;
+                                            );
+                                          }
+
+                                        }
+
+                                        render(&lt;App/&gt;, document.getElementById('root')); 
+                                    </code>
+                                </pre>
+                            </figure> 
+
+                            <h6>Routes++;</h6>
+                            <p>Take a look at our <code class="inline-snip"><i>Dog</i></code> component, while everything does work, an initial statement is missing for our doggo. We've not passed in any <code class="inline-snip"><i>woof</i></code> property. Let's look at our <code class="inline-snip">Route</code> component, we need to pass in more than just a bare component <code class="inline-snip"><i>Dog</i></code>, for this we can use the <code class="inline-snip">render</code> property.
+                            <br>
+                            The <code class="inline-snip">render</code> property works similarly to the <code class="inline-snip">component</code> property in that it tells the <code class="inline-snip">Route</code> component what needs to be on the page however, the <code class="inline-snip">render</code> property allows more flexibility. The <code class="inline-snip">render</code> property accepts a function that must return what is to be rendered, meaning you can write and do whatever you like in that function.
+                            </p>
+                             <figure>
+                                <pre data-line="12-16">
+                                    <code class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+                                        import {render} from 'react-dom';
+                                        import Dog from './Dog.js';
+                                        import Cat from './Cat.js';
+                                        import { BrowserRouter, Route, Link } from 'react-router-dom';
+                                        class App extends Component{
+                                          render(){
+                                            return(
+                                              &lt;BrowserRouter&gt;
+                                                &lt;div&gt;
+                                                  &lt;Route path=&quot;/dog&quot; render={ 
+                                                    ()=&gt;{
+                                                      return &lt;Dog woof={&quot;I can speak for myself&quot;}/&gt;
+                                                    } 
+                                                  }/&gt; 
+                                                  &lt;Route path=&quot;/cat&quot; component={Cat}/&gt;
+
+                                                  &lt;ul&gt;
+                                                    &lt;li&gt; &lt;Link to=&quot;/dog&quot;&gt;dog&lt;/Link&gt; &lt;/li&gt;
+                                                    &lt;li&gt; &lt;Link to=&quot;/cat&quot;&gt;cat&lt;/Link&gt; &lt;/li&gt;
+                                                  &lt;/ul&gt;
+                                                &lt;/div&gt;
+                                              &lt;/BrowserRouter&gt;
+                                            );
+                                          }
+
+                                        }
+
+                                        render(&lt;App/&gt;, document.getElementById('root')); 
+                                    </code>
+                                </pre>
+                            </figure> 
+                            <p>In our <code class="inline-snip">Route</code> component, we simply replaced the <code class="inline-snip">component</code> property with the <code class="inline-snip">render</code> property which accepts a function that returns something to be rendered. We wrote a function that returns our <code class="inline-snip"><i>Dog</i></code> component with a <code class="inline-snip"><i>woof</i></code> property and of course we wrapped that between curly braces.
+                            <br>
+                            We can tidy up a little for some more complexity, since the render property accepts a function, we can define a function outside and simply return that function.
+                            </p>
+                            <figure>
+                                <pre data-line="10-12,16">
+                                    <code class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+                                        import {render} from 'react-dom';
+                                        import Dog from './Dog.js';
+                                        import Cat from './Cat.js';
+                                        import { BrowserRouter, Route, Link } from 'react-router-dom';
+                                        class App extends Component{
+                                          render(){
+
+                                            let func = ()=&gt;{
+                                              return(&lt;Dog woof={&quot;I can speak for myself&quot;}/&gt;);
+                                            }
+                                            return(
+                                              &lt;BrowserRouter&gt;
+                                                &lt;div&gt;
+                                                  &lt;Route path=&quot;/dog&quot; render={func}/&gt; 
+                                                  &lt;Route path=&quot;/cat&quot; component={Cat}/&gt;
+
+                                                  &lt;ul&gt;
+                                                    &lt;li&gt; &lt;Link to=&quot;/dog&quot;&gt;dog&lt;/Link&gt; &lt;/li&gt;
+                                                    &lt;li&gt; &lt;Link to=&quot;/cat&quot;&gt;cat&lt;/Link&gt; &lt;/li&gt;
+                                                  &lt;/ul&gt;
+                                                &lt;/div&gt;
+                                              &lt;/BrowserRouter&gt;
+                                            );
+                                          }
+
+                                        }
+
+                                        render(&lt;App/&gt;, document.getElementById('root')); 
+                                    </code>
+                                </pre>
+                            </figure> 
+                            <p>Now our func function is too small so we're gonna add some more stuff to justify pulling it out.</p>
+
+                            <h6>Simple Route Restriction</h6>
+                            <p>I only want authorized individuals to see my <code class="inline-snip"><i>Dog</i></code> component, what should we do ? (secret doggo). Well to begin, we need something to indicate whether or not our user is authorized or not, for that we're going to add a property <code class="inline-snip"><i>authorized</i></code> to our state. Then in our <code class="inline-snip"><i>func</i></code> function, depending on if a user is authorized or not, we shall allow them to access our doggo.
+                            <br>
+                            Our <code class="inline-snip"><i>func</i></code> function however SHOULD definitely return some sort of view, therefore we're going to create a simple <code class="inline-snip"><i>AccessDenied</i></code> component to return if a user does not have access.
+                            <br>
+                            <br>
+                            First our <code class="inline-snip"><i>AccessDenied</i></code> component in <code class="inline-snip"><i>AccessDenied.js</i></code>.
+                            </p>
+                            <figure>
+                                <pre>
+                                    <code class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+
+                                        export default class AccessDenied extends Component{
+                                            render(){
+                                                return(
+                                                    &lt;div&gt; 
+                                                        &lt;h1&gt;Access Denied&lt;/h1&gt;
+                                                        &lt;img src=&quot;http://www.free-icons-download.net/images/dog-icon-86470.png&quot;/&gt;
+                                                    &lt;/div&gt;
+                                                )
+                                            }
+                                        }
+                                    </code>
+                                </pre>
+                            </figure> 
+                            <p>Now to modify our <code class="inline-snip"><i>index.js</i></code></p>
+                            <figure>
+                                <pre data-line="6,9-14,21-22">
+                                    <code class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+                                        import {render} from 'react-dom';
+                                        import Dog from './Dog.js';
+                                        import Cat from './Cat.js';
+                                        import AccessDenied from './AccessDenied.js';
+                                        import { BrowserRouter, Route, Link } from 'react-router-dom';
+                                        class App extends Component{
+                                          constructor(){
+                                            super();
+                                            this.state={
+                                              authorized:0
+                                            }
+                                          }
+
+                                          render(){
+
+                                            let func = ()=&gt;{
+                                              if(this.state.authorized)
+                                                return(&lt;Dog woof={&quot;I can speak for myself&quot;}/&gt;);
+                                              else
+                                                return(&lt;AccessDenied/&gt;);
+                                            }
+
+                                            return(
+                                              &lt;BrowserRouter&gt;
+                                                &lt;div&gt;
+                                                  &lt;Route path=&quot;/dog&quot; render={func}/&gt; 
+                                                  &lt;Route path=&quot;/cat&quot; component={Cat}/&gt;
+
+                                                  &lt;ul&gt;
+                                                    &lt;li&gt; &lt;Link to=&quot;/dog&quot;&gt;dog&lt;/Link&gt; &lt;/li&gt;
+                                                    &lt;li&gt; &lt;Link to=&quot;/cat&quot;&gt;cat&lt;/Link&gt; &lt;/li&gt;
+                                                  &lt;/ul&gt;
+                                                &lt;/div&gt;
+                                              &lt;/BrowserRouter&gt;
+                                            );
+                                          }
+
+                                        }
+
+                                        render(&lt;App/&gt;, document.getElementById('root')); 
+                                    </code>
+                                </pre>
+                            </figure> 
+                            <p>(Note: There are more complex ways to do this but for now this is effective and simple.)</p>
+                            
                             <h4>Requests</h4>
+                            <h6>Choosing a library</h6>
+                            <p><code class="inline-snip">React</code> has no native way to make requests, therefore we need to use a javascript library to make these requests for us. There are several options, just to give some context, two of the most popular would be an old but gold <code class="inline-snip">JQuery</code> and one of the more popular newer guys <code class="inline-snip">fetch</code>, we'll be using neither <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">( ͡° ͜ʖ ͡°)</a>. We shall be using one of the middle-age guys <code class="inline-snip">axios</code> which is very popular and powerful.
+                            <br>
+                            <br>
+                            Let's install <code class="inline-snip">axios</code>
+                            </p>
+                            <figure>
+                                <pre>
+                                    <code class="bash code-space">
+                                        npm install axios --save   
+                                    </code>
+                                </pre>
+                            </figure> 
+                            <p>We'll just be making simple requests as there are many better tutorials that focus solely on axios, now let's look at some of the syntax</p>
                         </div>
                         
                             
