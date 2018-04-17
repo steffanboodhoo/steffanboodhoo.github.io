@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
-        <title>Suppablog - Minimal Blog Html Template</title>
+        <title>React Tutorial - Steffan Boodhoo</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="description" content="Template by Colorlib" />
-        <meta name="keywords" content="HTML, CSS, JavaScript, PHP" />
-        <meta name="author" content="Colorlib" />
+        <meta name="description" content="React quickstart tutorial" />
+        <meta name="keywords" content="React, Tutorial, JavaScript, Code, Steffan, Boodhoo" />
+        <meta name="author" content="Steffan Boodhoo" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
         <link rel="shortcut icon" href="images/favicon.png" />
@@ -45,11 +45,6 @@
         <!-- Left Sidebar -->
         <div id="sidebar" class="sidebar">
             <div class="menu-left-part">
-                <div class="search-holder">
-                    <label>
-                        <input type="search" class="search-field" placeholder="Type here to search..." value="" name="s" title="Search for:">
-                    </label>
-                </div>
                 <div class="site-info-holder">
                     <h1 class="site-title">Menu</h1>
                     <p class="site-description">
@@ -71,7 +66,7 @@
             </div>
             <div class="menu-right-part">
                 <div class="logo-holder">
-                    <a href="index.html">
+                    <a href="../index.html">
                         <img src="../images/logo.png" alt="Suppablog WP">
                     </a>
                 </div>
@@ -107,7 +102,7 @@
                                 <li><a href="#">Tutorials</a></li>
                             </ul>
                         </div>
-                        <div class="entry-date published">April 7, 2018</div>
+                        <div class="entry-date published">April 17, 2018</div>
                         <div class="clear"></div>
                     </div>
 
@@ -780,7 +775,7 @@
                                                 return(
                                                     &lt;div&gt; 
                                                         &lt;h1&gt;Access Denied&lt;/h1&gt;
-                                                        &lt;img src=&quot;http://www.free-icons-download.net/images/dog-icon-86470.png&quot;/&gt;
+                                                        &lt;img src=&quot;http://www.free-icons-download.net/images/dog-icon-86470.png&quot; alt=&quot;dog pic&quot;/&gt;
                                                     &lt;/div&gt;
                                                 )
                                             }
@@ -847,17 +842,139 @@
                             </p>
                             <figure>
                                 <pre>
-                                    <code class="bash code-space">
+                                    <code class="language-bash code-space">
                                         npm install axios --save   
                                     </code>
                                 </pre>
                             </figure> 
                             <p>We'll just be making simple requests as there are many better tutorials that focus solely on axios, now let's look at some of the syntax</p>
+                            <figure>
+                                <pre>
+                                    <code class="language-jsx code-space">
+                                        axios.get(url)              //url of resource you're trying to get 
+                                        .then(function(response){   //function to handle a successful response from the server
+
+                                        }).catch(function(err){     //function to handle a unsuccessful response from the server
+
+                                        })
+                                    </code>
+                                </pre>
+                            </figure> 
+                            <p>Let's grab a simple json file from on the server and print it to console, you can put the following code at the buttom of your index.js then remove it after testing it out</p>
+                            <figure>
+                                <pre>
+                                    <code class="language-jsx code-space">
+                                        axios.get('https://steffanboodhoo.github.io/sample_data.json')
+                                        .then(function(resp){
+                                          console.log(resp)
+                                        })
+                                    </code>
+                                </pre>
+                            </figure> 
+                            <p>
+                            Let's create one more component, List, in a file List.js. We're going to render a simple list with the data we fetch using axios. 
+                            </p>
+                            <figure>
+                                <pre>
+                                    <code class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+
+                                        export default class List extends Component{
+                                            constructor(){
+                                                super();
+                                                this.state={
+                                                    items:[]
+                                                }
+                                            }
+
+                                            render(){
+                                                return(
+                                                    &lt;div&gt;
+                                                    &lt;/div&gt;
+                                                )
+                                            }
+                                        }
+                                    </code>
+                                </pre>
+                            </figure>
+                            <p>This is the basic skeleton where we define some state to be used later and return an empty div, now in the constructor we're going to load some data using axios.</p> 
+                            <figure>
+                                <pre data-line="3,12-15">
+                                    <code class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+                                        import axios from 'axios';
+
+                                        export default class List extends Component{
+                                            constructor(){
+                                                super();
+                                                this.state={
+                                                    items:[]
+                                                }
+
+                                                axios.get('https://steffanboodhoo.github.io/sample_data.json')
+                                                .then((resp)=&gt;{
+                                                    this.setState({items:resp.data})
+                                                });
+                                            }
+
+                                            render(){
+                                                return(
+                                                    &lt;div&gt;
+                                                    &lt;/div&gt;
+                                                )
+                                            }
+                                        }
+                                    </code>
+                                </pre>
+                            </figure>
+                            <p>We've imported the axios library and used it to fetch some data and update our state with it. Now we're going to use that data to create our list.</p>
+                            <figure>
+                                <pre data-line="19-25">
+                                    <code class="language-jsx code-space">
+                                        import React,{Component} from 'react';
+                                        import axios from 'axios';
+
+                                        export default class List extends Component{
+                                            constructor(){
+                                                super();
+                                                this.state={
+                                                    items:[]
+                                                }
+
+                                                axios.get('https://steffanboodhoo.github.io/sample_data.json')
+                                                .then((resp)=&gt;{
+                                                    this.setState({items:resp.data})
+                                                });
+                                            }
+
+                                            render(){
+                                                let func = ()=&gt;{
+                                                    let elems = []
+                                                    for(let i in this.state.items)
+                                                        elems.push(&lt;h1&gt;{this.state.items[i].first_name}&lt;/h1&gt;);  
+                                                    return elems;
+                                                }
+                                                return(&lt;div&gt;{func()}&lt;/div&gt;)
+                                            }
+                                        }
+                                    </code>
+                                </pre>
+                            </figure>
                         </div>
+                        <p>Important things to note, React elements can be stored in variables e.g. <code class="inline-snip">let elem = &lt;h1&gt; doggo &lt;/h1&gt;;</code>, these same elements can be used in rendering using the curly braces e.g. <code class="inline-snip">(&lt;div&gt;{elem}&lt;/div&gt;</code>. 
+                        <br>Using these two concepts, we were able to create a function <code class="inline-snip"><i>func</i></code> to loop through the data and create an array of elements. We then called <code class="inline-snip"><i>func</i></code> inbetween the div which returned a list of elements to be rendered.
+                        <br>
+                        At this point you should be able to link this component on your own with a route or otherwise, give it a shot <a href="https://www.youtube.com/watch?v=FTQbiNvZqaY">:^(click me)</a>
+                        <br>
+                        (Consider making the call in the containing component, App, then passing the data to be rendered in props then use array.map to create your list of elements)
+
+                        </p>                            
                         
-                            
+                        <h4>Closing remarks</h4>
+                        <p>There are a lot more complex topics and methods to be covered, I may cover in a follow up (depending on time, feedback etc). I really enjoyed doing this, I tried to make is as easily digestable while covering practical methods and understanding. Anyways if you have gone though this, please let me know what you think and if there are any errors or what topics/projects/tools you'd like to see me do cao m8s</p>
                     </div>
                     <div class="clear"></div>
+
                 </article>
             </div>
         </div>
