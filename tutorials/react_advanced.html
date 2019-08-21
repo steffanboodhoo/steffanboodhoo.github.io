@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <title>React Tutorial - Steffan Boodhoo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="React quickstart tutorial" />
+    <meta name="keywords" content="React, Tutorial, JavaScript, Code, Steffan, Boodhoo" />
+    <meta name="author" content="Steffan Boodhoo" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700%7CLibre+Baskerville:400,400italic,700'
+        rel='stylesheet' type='text/css'>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css"> -->
+
+    <link rel="stylesheet" type="text/css" href='../css/clear.css' />
+    <link rel="stylesheet" type="text/css" href='../css/common.css' />
+    <link rel="stylesheet" type="text/css" href='../css/font-awesome.min.css' />
+    <link rel="stylesheet" type="text/css" href='../css/carouFredSel.css' />
+    <link rel="stylesheet" type="text/css" href='../css/sm-clean.css' />
+    <link rel="stylesheet" type="text/css" href='../css/prism.css' />
+
+    <link rel="stylesheet" type="text/css" href='../style.css' />
+    <link rel="stylesheet" type="text/css" href='../post_style.css' />
+
+    <!--[if lt IE 9]>
+                <script src="js/html5.js"></script>
+        <![endif]-->
+
+</head>
+
+
+<body class="single-post">
+
+    <!-- Preloader Gif -->
+    <table class="doc-loader">
+        <tbody>
+            <tr>
+                <td>
+                    <img src="../images/ajax-document-loader.gif" alt="Loading...">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Left Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <div class="menu-left-part">
+            <div class="site-info-holder">
+                <h1 class="site-title">Menu</h1>
+                <p class="site-description">
+                    Qualifications, guides and everything inbetween, some for the public and some just to help me.
+                </p>
+            </div>
+            <nav id="header-main-menu">
+                <ul class="main-menu sm sm-clean">
+                    <li><a href="../index.html" class="current">Home</a></li>
+                    <li><a href="../tutorials.html">Tutorials</a></li>
+                    <li><a
+                            href="https://drive.google.com/file/d/1Ne-8fZH7KfvnaRpBzHF0pqTjb9-RfPq9/view?usp=sharing">Vitae</a>
+                    </li>
+                </ul>
+            </nav>
+            <footer>
+                <div class="footer-info">
+                    © 2018 SUPPABLOG HTML TEMPLATE. <br> CRAFTED WITH <i class="fa fa-heart"></i> BY <a
+                        href="https://colorlib.com">COLORLIB</a>.
+                </div>
+            </footer>
+        </div>
+        <div class="menu-right-part">
+            <div class="logo-holder">
+                <a href="../index.html">
+                    <img src="../images/logo.png" alt="Suppablog WP">
+                </a>
+            </div>
+            <div class="toggle-holder">
+                <div id="toggle">
+                    <div class="menu-line"></div>
+                </div>
+            </div>
+            <div class="social-holder">
+                <div class="social-list">
+                    <a href="https://github.com/steffanboodhoo"><i class="fa fa-github"></i></a>
+                    <a href="https://www.facebook.com/steffandb"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/_steff_bdh/"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="fixed scroll-top"><i class="fa fa-caret-square-o-up" aria-hidden="true"></i></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!-- end left sidebar-->
+
+    <!-- Single Content -->
+    <div id="content" class="site-content center-relative">
+        <div class="single-post-wrapper content-auto center-relative">
+
+            <article class="center-relative">
+                <h1 class="entry-title">
+                    An advanced tutorial on React
+                </h1>
+                <div class="post-info content-auto center-relative">
+                    <div class="cat-links">
+                        <ul>
+                            <li><a href="#">Tutorials</a></li>
+                        </ul>
+                    </div>
+                    <div class="entry-date published">April 17, 2018</div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="entry-content">
+                    <div class="content-wrap content-auto center-relative">
+                        <p> This is an advanced tutorial which assumes you have the basic React knowledge. (<a
+                                href='/tutorials/react_basic.html'>Basic tutorial here</a>)</a> This tutorial takes into
+                            consideration scale of the application code base and the amount of load the application has
+                            to handle (data and processing). This provides a basis for you to build on in your own
+                            context.</p>
+                        <br>
+                        <div class="clear"></div>
+                    </div>
+
+
+                    <div class="content-wrap content-auto center-relative">
+                        <h2>Setup</h2>
+
+
+                        <h4>Dependencies</h4>
+                        <h6>Project initialization</h6>
+
+                        <p>We are moving away from <code class='inline-snip'>create-react-app</code>. Instead we are
+                            moving to <a href='https://webpack.js.org/'>webpack</a>. Now let's get started by creating
+                            our project folder and package.json</p>
+                        <figure>
+                            <pre>
+                                <code class="language-bash code-space">
+                                    $ mkdir example_app
+                                    $ cd example_app/
+                                    $ npm init
+                                </code>
+                            </pre>
+                        </figure>
+                        <p>You can pretty much type whatever you like in there. Now let's install the basic react
+                            libraries. I discussed each of them last time so i'll not be doing so again</p>
+                        <figure>
+                            <pre>
+                                <code class="language-bash code-space">
+                                    $ npm install react react-dom react-router-dom --save
+                                </code>
+                            </pre>
+                        </figure>
+                        <p>Now let's create our source folder and in it a basic index.html and index.js</p>
+                        <figure>
+                            <pre>
+                                <code class="language-bash code-space">
+                                    $ mkdir src
+                                    $ touch src/index.html
+                                    $ touch src/index.js
+                                </code>
+                            </pre>
+                        </figure>
+                        <p>Let's put something in our index.html and index.js to get started</p>
+                        <figure>
+                            <pre>
+                                <code class="language-html code-space">
+                                    &lt;!DOCTYPE html&gt;
+                                    &lt;html&gt;
+                                        &lt;head&gt;&lt;/head&gt;
+                                        &lt;body&gt;
+                                            &lt;div id='root'&gt;&lt;/div&gt;
+                                        &lt;/body&gt;
+                                    &lt;/html&gt;
+                                </code>
+                            </pre>
+                        </figure>
+
+                        <figure>
+                            <pre>
+                                <code class="language-jsx code-space">
+                                    import React from 'react';
+                                    import { render } from 'react-dom';
+
+                                    render(&lt;div&gt;
+                                        &lt;h1&gt;Something basic&lt;/h1&gt;
+                                    &lt;/div&gt;, document.getElementById('root'));
+                                </code>
+                            </pre>
+                        </figure>
+                        <p>This should all be familiar, we're simply manipulating the dom and putting something basic on
+                            the page.</p>
+
+
+                        <h6>Managing our dependencies and running our app</h6>
+                        <p>You may have noticed we haven't linked our index.js in our html page, this was intentional as
+                            we're going to have something do that for us. That thing is called <a
+                                href='https://webpack.js.org/'>webpack</a> </p>
+                        <figure>
+                            <pre>
+                            <code class="language-bash code-space">
+                                $ npm install webpack webpack-cli webpack-dev-server html-webpack-plugin --save-dev
+                            </code>
+                        </pre>
+                        </figure>
+                        <p>Our dependencies are scattered in our node_modules folder, webpack can be used to easily load
+                            these. Also our browser may not be able to directly interpret/run the code we write e.g. JSX
+                            or experimental Javascript, webpack can transform our code into a form the browser can
+                            understand.</p>
+                        <p>Though I will provide a brief surface level description, I highly advise going through <a
+                                href='https://webpack.js.org/concepts'>webpack's official documentation</a>. To get
+                            started you will need to create a file called <code
+                                class='inline-snip'>webpack.config.js</code>. In this file we export an object that
+                            tells webpack (1) where to look to start processing our source code (2) where to output the
+                            'transformed' files (3) what modules to use to interpret and transform the files (4)
+                            anything extra</p>
+                        <figure>
+                            <pre>
+                            <code class="language-javascript code-space">
+                                module.exports = {
+                                    entry: (1) where to look for our files
+                                
+                                    ,output:{
+                                        (2) where to output our transformed files
+                                    }
+                                
+                                    ,module:{
+                                        rules:[(3) what modules are used to process what files ]
+                                    }
+                                
+                                    ,plugins:[
+                                        (4) extra stuff
+                                    ]
+                                }
+                            </code>
+                        </pre>
+                        </figure>
+                        <p>First entry and output, our application starts at index.js, so that shall be our entry point,
+                            as for our output it is customary to output to a dist folder, for now create the dist folder
+                            in the same directory as the webpack.config.js (but you can output anywhere you
+                            like).</p>
+                        <figure>
+                            <pre>
+                            <code class="language-javascript code-space">
+                                module.exports = {
+                                    entry: './src/index.js'  //relevant to where the webpack config file is stored
+                                
+                                    ,output:{
+                                        filename:'index.bundle.js', //what we want the name of the output file to be
+                                        path: 'dist' //create dist folder(if not exist) and put the file there
+                                    }
+                                
+                                    ,module:{
+                                        rules:[(3) what modules are used to process what files ]
+                                    }
+                                
+                                    ,plugins:[
+                                        (4) extra stuff
+                                    ]
+                                }
+                            </code>
+                        </pre>
+                        </figure>
+                        <p>Now for the module, this specifies what MODULES are needed to transform which FILES. This is
+                            done by (1) using a <b>pattern</b> to match the files we want, (2) the location of which
+                            files to not transform (3) the actual modules used to transform these files</p>
+                        <figure>
+                            <pre>
+                            <code class="language-javascript code-space">
+                                module.exports = {
+                                    entry: './src/index.js'  //relevant to where the webpack config file is stored
+                                
+                                    ,output:{
+                                        filename:'index.bundle.js', //what we want the name of the output file to be
+                                        path: 'dist' //create dist folder(if not exist) and put the file there
+                                    }
+                                
+                                    ,module:{
+                                        rules:[
+                                            {//first rule
+                                                test: /\.js$/, //check for files that end with .js
+                                                exclude: /node_modules/, //dont check here
+                                                use: {loader: 'babel-loader'}// use these to process the matched files
+                                            },
+                                            {
+                                                test: /\.css$/, //check for files that end with .css
+                                                use: ['style-loader', 'css-loader'] ,//style-loader allows us to put the css in the html, css-loader allows us to import css in js files/classes
+                                            }
+                                        ]
+                                    }
+                                
+                                    ,plugins:[
+                                        (4) extra stuff
+                                    ]
+                                }
+                            </code>
+                        </pre>
+                        </figure>
+                        <p>We have just listed 3 modules to load/interpret/transform our code, <code clas='inline-snip'>babel-loader style-loader css-loader</code>, we must install these modules, first are the two for css </p>
+                        <figure>
+                            <pre>
+                            <code class="language-javascript code-space">
+                                $ npm install --save-dev css-loader style-loader
+                            </code>
+                        </pre>
+                        </figure>
+                        <p>The next module needs just a little bit more </p>
+                    </div>
+            </article>
+        </div>
+    </div>
+
+
+
+    <!--Load JavaScript-->
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type='text/javascript' src='../js/imagesloaded.pkgd.js'></script>
+    <script type='text/javascript' src='../js/jquery.nicescroll.min.js'></script>
+    <script type='text/javascript' src='../js/jquery.smartmenus.min.js'></script>
+    <script type='text/javascript' src='../js/jquery.carouFredSel-6.0.0-packed.js'></script>
+    <script type='text/javascript' src='../js/jquery.mousewheel.min.js'></script>
+    <script type='text/javascript' src='../js/jquery.touchSwipe.min.js'></script>
+    <script type='text/javascript' src='../js/jquery.easing.1.3.js'></script>
+    <script type='text/javascript' src='../js/main.js'></script>
+    <script type='text/javascript' src='../js/post.js'></script>
+    <script type='text/javascript' src='../js/prism.js'></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script> -->
+</body>
+
+</html>
